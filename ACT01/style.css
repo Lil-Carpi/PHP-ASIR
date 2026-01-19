@@ -1,0 +1,38 @@
+ body {
+   font-family: Arial, sans-serif;
+   background-color: #f0f0f0;
+   padding: 20px;
+ }
+
+ h1 {
+   color: #333;
+ }
+
+ /* Estilos para colocar las rodajas una al lado de la otra */
+ .slice-container {
+   display: inline-block;
+   margin: 10px;
+   vertical-align: top;
+   background: white;
+   padding: 5px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+ }
+
+ table {
+   border-collapse: collapse;
+ }
+
+ td {
+   width: 80px;
+   height: 40px;
+   text-align: center;
+   font-size: 12px;
+   font-family: monospace;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+ }
+
+ .slice-label {
+   text-align: center;
+   font-weight: bold;
+   margin-bottom: 5px;
+ }

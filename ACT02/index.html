@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <form method="get" action="assets/php/getpost.php">
-    <button type="submit">Enviar con GET</button>
-    <button type="submit">Enviar con POST</button>
-    <button type="reset"></button>
-  </form>
-</body>
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <form method="get" action="assets/php/getpost.php">
+      <div class="form-group">
+        <label class="form-label" for="num">Quants cubs vols?</label>
+        <input
+          class="form-input"
+          type="text"
+          placeholder="1, 2, 3 o qualsevol"
+          required
+        />
+      </div>
+      <div class="form-submit">
+        <button type="get">Enviar amb GET</button>
+        <button type="post">Enviar amb POST</button>
+        <button type="reset">Esborrar camps</button>
+      </div>
+    </form>
+  </body>
 </html>

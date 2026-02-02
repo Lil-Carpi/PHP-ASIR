@@ -3,24 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Cub RGB - selecció de talls</title>
+    <link rel="stylesheet" type="" href="assets/css/style.css" />
   </head>
   <body>
-    <form method="get" action="assets/php/getpost.php">
+    <div class="container">
+      <header>
+        <img src="assets/img/cub.png" alt="Cub RGB" class="logo" />
+        <h1>Cub RGB - selecció de talls</h1>
+      </header>
+    </div>
+
+    <form action="generador.php">
       <div class="form-group">
-        <label class="form-label" for="num">Quants cubs vols?</label>
-        <input
-          class="form-input"
-          type="text"
-          placeholder="1, 2, 3 o qualsevol"
-          required
-        />
+        <label for="nombre">Nom:</label>
+        <input type="text" id="nombre" name="nombre" required />
       </div>
-      <div class="form-submit">
-        <button type="get">Enviar amb GET</button>
-        <button type="post">Enviar amb POST</button>
-        <button type="reset">Esborrar camps</button>
+      <div class="form-group">
+        <label for="secciones"> Número de seccions del cub: </label>
+        <input type="number" name="secciones" min="2" max="10" value="5" required/>
+      </div>
+      <div class="button-group">
+        <button type="submit" formmethod="get">Envia amb GET</button>
+        <button type="submit" formmethod="post">Envia amb POST</button>
+        <button type="reset" value="Reset">Esborra valors</button>
       </div>
     </form>
   </body>

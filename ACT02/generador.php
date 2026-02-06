@@ -38,7 +38,7 @@ function miDec2Hex(int $numero): string // Funcion de conversion a base 16 para 
   $hex = ""; // inicia el string hex, para ir poniendo los valores
   while ($numero > 0) { 
     $resto = $numero % 16; // Se usa el resto para seleccionar el digito hexadecimal
-    $hex = $hexDigits[$resto] . $hex; 
+    $hex = $hexDigits[$resto] . $hex;  
     $numero = intdiv($numero, 16);
   }
 

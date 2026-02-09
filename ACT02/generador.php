@@ -38,7 +38,7 @@ function miDec2Hex(int $numero): string // Funcion de conversion a base 16 para 
   $hex = ""; // inicia el string hex, para ir poniendo los valores
   while ($numero > 0) { 
     $resto = $numero % 16; // Se usa el resto para seleccionar el digito hexadecimal
-    $hex = $hexDigits[$resto] . $hex;  
+    $hex = $hexDigits[$resto] . $hex;   
     $numero = intdiv($numero, 16);
   }
 
@@ -64,12 +64,30 @@ $paso = 255 / ($secciones - 1);
 </head>
 
 <body>
-  <h1>Bienvenido, <?= htmlspecialchars($nombre) ?></h1>
-  <p>
-    <span class="variable">método = <?= $metodo ?></span>
-    <span class="variable">nombre = <?= htmlspecialchars($nombre) ?></span>
-    <span class="variable">secciones = <?= $secciones ?></span>
-  </p>
+    <div class="container">
+      <header>
+        <img src="assets/img/cub.png" alt="Cub RGB" class="logo" />
+        <h1>Cub RGB</h1>
+      </header>
+    </div>
+  
+  <div class="cub-tronja">
+    <p>El mètode d'enviament és <?= $metodo ?></p>
+    <p>Les dades rebudes són aquestes:</p>
+      <ul>
+        <?php 
+            if ($metodo === 'GET') {
+              echo "<li>GET:<span class='variable'> nom = " . htmlspecialchars($nombre) . " </span><span class='variable'> seccions = $secciones </span></li>";
+              echo "<li>POST:</li>";
+            } else {
+              echo "<li>GET: </li>";
+              echo "<li>POST:<span class='variable'> nom = " . htmlspecialchars($nombre) . " </span><span class='variable'> seccions = $secciones </span></li>";
+            }
+        ?>
+        <li>REQUEST (que és la unió de les dues):<span class="variable"> nom = <?= htmlspecialchars($nombre)?> </span><span class="variable"> seccions = <?=$secciones?> </span></li>
+      </ul>
+  </div>
+    <p class="saludo">Hola, <?= htmlspecialchars($nombre) ?>! Representarem el cub RGB fent <?= $secciones?> seccions per dimensió:</p>
   <?php
   for ($z = 0; $z < $secciones; $z++) {
     $blue = (int) round($z * $paso);
@@ -86,10 +104,10 @@ $paso = 255 / ($secciones - 1);
         $red = (int) round($x * $paso);
 
         $hex = "#" .
-          miDec2Hex($red) .
+          miDec2Hex($blue) .
           miDec2Hex($green) .
-          miDec2Hex($blue);
-        $textColor = obtenerColorTexto($red, $green, $blue);
+          miDec2Hex($red);
+        $textColor = obtenerColorTexto($blue, $green, $red);
         echo "<td style='background:$hex; color:$textColor'>$hex</td>";
       }
       echo "</tr>";

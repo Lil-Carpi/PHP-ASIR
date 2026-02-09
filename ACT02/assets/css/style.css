@@ -15,7 +15,7 @@ header
 }
 .logo
 {
-  width: 80px;
+  width: 55px;
   height: auto;
 }
 h1
@@ -61,3 +61,47 @@ button:active
   box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
 }
 
+.cub-tronja
+{
+  background-color: #fdbd6f;
+  border: 3px solid #ac6124;
+  padding:10px 8px;
+}
+.cub-tronja, p, ul, li
+{
+  color: #ac6224;  
+} 
+
+.variable
+{
+  border: 2px solid #962700;
+  background-color: #fe7704;
+  border-radius: 2rem;
+  padding: 0 4px 0 4px;
+  color:#962700;
+  margin:0 5px;
+}
+.saludo
+{
+  color:#000000;
+}
+
+.slice-container
+{
+  display: inline-block;
+
+}
+.slice-label
+{
+  background-color: #0055ff;
+  border:1px solid #ff5500;
+  border-radius: 3rem;
+  padding: 0 3px 0 3px;
+  color: white;
+  display: inline-block;
+}
+tr, td
+{
+  padding: 42px 22px 42px 22px;
+  border: 1px solid black;
+}

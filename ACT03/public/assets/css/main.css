@@ -1,0 +1,24 @@
+body
+{
+    background:#deddd9;
+}
+
+.logo, h1
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+.logo
+{
+    width: 90px;
+    margin-left: 20px;
+}
+nav
+{
+    background: #bbdaca;
+    border: 3px solid #147033;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 25px 20px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+}

@@ -22,3 +22,48 @@ nav
     margin: 25px 20px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
 }
+/* --- SELECTOR VISUAL DE IMÁGENES --- */
+.image-selector-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e6ece8; 
+    border: 2px dashed #9aa89e;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.image-selector-container h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #147033;
+    margin-bottom: 10px;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.selectable-image {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background: #fff;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.selectable-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.selectable-image.selected {
+    border-color: #147033;
+    background: #d4edda; 
+    box-shadow: 0 0 10px rgba(20, 112, 51, 0.5);
+}

@@ -59,8 +59,8 @@ $items = $stmt->fetchAll();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <script src="assets/js/index.js" defer></script>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/index.js" defer></script>
   <title>Minetest Wiki - Afegeix ítem</title>
 </head>
 
@@ -76,27 +76,35 @@ $items = $stmt->fetchAll();
 
   <main>
     <?php if ($mensaje): ?>
-      <div style="background-color: <?= strpos($mensaje, 'error') !== false ? 'lightcoral' : 'lightgreen' ?>; padding: 10px;">
+      <div style="background-color: <?= strpos($mensaje, 'error') !== false ? 'lightcoral' : 'lightgreen' ?>; padding: 10px; border: solid 3px black ;border-radius: 10px;">
         <?= htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8') ?>
       </div>
     <?php endif; ?>
 
     <div>
       <form method="POST" action="afegir.php" enctype="multipart/form-data">
-        <fieldset>
-          Nom d'item: <input name='itemName' type='text' required tabindex='1'>
-          Descripcio: <input name='descripcion' type='text' tabindex='2'>
-          <div>
+        <fieldset style="border-radius: 10px; border: 2px solid red; padding: 30px 20px 10px; margin-bottom:0 ;">
+          <p style=" display:flex; margin-left: 10px; gap: 30px; margin-bottom: 0;">
+            Nom d'item: <input name='itemName' type='text' required tabindex='1'>
+            Descripcio: <input name='descripcion' type='text' tabindex='2'>
+          </p>
+          <div style="padding: 30px;">
             <fieldset>
-              <legend>Utilitza un dels dos següents</legend>
+              <legend style="margin: 30px;">Utilitza un dels dos següents</legend>
               Nom d'arxiu d'imatge (ex: Apple.png): <input name="imageName" type="text" tabindex='3'> <br>
-              Arxiu d'imatge (extensió = .png, mida < 40kb): <input type="file" name="imageFile" id="imageFile" accept=".png" tabindex='4'>
+              Arxiu d'imatge (extensió = .png, mida 40kb): <input type="file" name="imageFile" id="imageFile" accept=".png" tabindex='4'>
             </fieldset>
           </div>
           <button type="submit"><img src="assets/imatges/botons/add.svg" alt=""> Afegeix</button>
         </fieldset>
       </form>
-      <div class="image-selector-container">
+
+      <!--OPCIONAL: Selector de imagenes JS, para facilitar el seleccionado de los iconos 
+            disponibles. Como el usuario no sabe que iconos existen mas alla del "Apple.png",
+            le será complicado poner las imagenes solo con el input de arriba-->
+
+      <!--    
+        <div class="image-selector-container">
         <h3>O tria una imatge existent fent-hi clic:</h3>
         <div class="image-grid">
           <?php foreach ($imatges_disponibles as $img): ?>
@@ -108,6 +116,7 @@ $items = $stmt->fetchAll();
           <?php endforeach; ?>
         </div>
       </div>
+  -->
     </div>
 
     <h2>Llista d'ítems</h2>

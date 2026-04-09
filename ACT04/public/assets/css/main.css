@@ -1,0 +1,201 @@
+*
+{
+    text-decoration: none;
+}
+body
+{
+    background:#deddd9;
+}
+
+.logo, h1
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+.logo
+{
+    width: 90px;
+    margin-left: 20px;
+}
+nav
+{
+    color:white;
+    background-image: url("../imatges/fons.png");
+    background-position: center;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 25px 20px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.fsetP
+{
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.fsetC
+{
+margin: 0 10px 20px 10px;
+padding: 10px;
+}
+.fsetC div
+{
+    margin:10px;
+}
+
+
+/* --- SELECTOR VISUAL DE IMÁGENES --- */
+.image-selector-container 
+{
+    margin-top: 20px;
+    padding: 15px;
+    background: #e6ece8; 
+    border: 2px dashed #9aa89e;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.image-selector-container h3 
+{
+    margin-top: 0;
+    font-size: 16px;
+    color: #147033;
+    margin-bottom: 10px;
+}
+
+.image-grid 
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.selectable-image 
+{
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background: #fff;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.selectable-image:hover 
+{
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.selectable-image.selected 
+{
+    border-color: #147033;
+    background: #d4edda; 
+    box-shadow: 0 0 10px rgba(20, 112, 51, 0.5);
+}
+
+.secBar
+{
+    border: 2px solid #7794ce;
+    border-radius: 30px;
+    background-color: #9fc1ff;
+    padding: 7px 0 7px 20px;
+    margin: 1px 20px;
+}
+
+.afegirBtn
+{
+    display: inline-flex;
+    padding: 5px;
+    border: 1px outset buttonborder;
+    background-color: #c9dcd1;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    text-decoration:none;
+    
+}
+.afegirBtn img
+{
+    width: 18px;
+    margin-right: 10px;
+}
+.afegirBtn:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+.minibtn
+{
+    display: inline;
+}
+.minibtn img
+{
+    width: 10px;
+    padding: 0 2px 0 2px;
+}
+
+.formulCenter
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+}
+.formul
+{
+    padding:30px;
+    border:2px solid #1c6f43;
+    background-color: #bbdaca;
+    border-radius: 10px;
+    box-shadow: 0 0 70px rgba(0,0,0,0.5);
+}
+.formGroup input[type=text], input[type=password]
+{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+.formGroup p
+{
+    margin: 0;
+}
+.submitBtn
+{
+    margin-top: 5px 10px;
+    padding: auto;
+}
+
+.confirm
+{
+    padding-left: 20px;
+}
+
+.loginBtn
+{
+    display:flex;
+    align-items: center;
+    
+}
+.loginBtn button
+{
+    margin-left: auto;
+    margin-right: 30px;
+    padding:20px;
+    border-radius: 10px;
+    background-color: #fdaaa6;
+    border:solid 3px #160000;
+    box-shadow: 0 0 100px rgba(255,255,255, 0.2);
+    
+}
+
+.llistaItems
+{
+    margin-left:40px;
+}

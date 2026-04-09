@@ -2,7 +2,7 @@
 $host     = '192.168.56.101';
 $db       = 'minetest';
 $user     = 'carpi';
-$pass     = 'contraseñasupersegura20000';
+$pass     = 'supersegura20000';
 $charset  = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

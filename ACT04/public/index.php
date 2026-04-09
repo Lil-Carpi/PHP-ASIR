@@ -58,36 +58,47 @@ $items = $stmt->fetchAll();
 <body>
   <header>
     <nav>
-
-      <h1>Minetest Wiki</h1>
-      <img class="logo" src="assets/imatges/logo.png" alt="minetest logo">
-
+      
+      <form id="signin">
+        <div class="loginBtn">
+          <img class="logo" src="assets/imatges/logo.png" alt="minetest logo">
+          <h1>Minetest Wiki v2</h1>
+          <button type="submit">Inicia sessió</button>       
+        </div>
+      </form>
     </nav>
   </header>
 
   <main>
+    <div class="secBar">
+      <h1>Página inicial</h1>
+    </div>
     <?php if ($mensaje): ?>
-      <div style="background-color: lightgreen; padding: 10px; margin-bottom: 20px;">
+      <div style="background-color: lightgreen;  margin: 30px; padding: 25px; border: solid 3px #053406 ;border-radius: 10px;">
         <?= htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8') ?>
       </div>
-    <?php endif; ?>
-    <h2>Llista d'items</h2>
-    <ul>
-      <?php foreach ($items as $item): ?>
-        <li><img src="assets/imatges/items/<?= htmlspecialchars($item['ImageFile'], ENT_QUOTES, 'UTF-8') ?>" alt="" width="32">
-          <?= htmlspecialchars($item['Nom'], ENT_QUOTES, 'UTF-8') ?>
-          (<?= htmlspecialchars($item['Descripcio'], ENT_QUOTES, 'UTF-8') ?>)
-          <form method="POST" style="display: inline;">
-            <input type="hidden" name="esborrar_id" value="<?= $item['ItemId'] ?>">
-            <button type="submit"><img src="assets/imatges/botons/delete.svg"></button>
-          </form>
-          <form method="POST" action="editar.php" style="display:inline;"> <input type="hidden" name="editar_id" value="<?= $item['ItemId'] ?>">
-            <button type="submit"><img src="assets/imatges/botons/edit.svg"></button>
-          </form>
-        </li>
-      <?php endforeach; ?>
-    </ul>
-    <a href="afegir.php"><button> <img src="assets/imatges/botons/add.svg" alt=""> Afegir items</a>
+    
+      <?php endif; ?>
+    <div class="llistaItems">
+      <h2>Llista d'items</h2>
+      <ul>
+        <?php foreach ($items as $item): ?>
+          <li><img src="assets/imatges/items/<?= htmlspecialchars($item['ImageFile'], ENT_QUOTES, 'UTF-8') ?>" alt="" width="32">
+            <?= htmlspecialchars($item['Nom'], ENT_QUOTES, 'UTF-8') ?>
+            (<?= htmlspecialchars($item['Descripcio'], ENT_QUOTES, 'UTF-8') ?>)
+            <form method="POST" style="display: inline;">
+              <input type="hidden" name="esborrar_id" value="<?= $item['ItemId'] ?>">
+              <button class="minibtn" type="submit"><img src="assets/imatges/botons/delete.svg"></button>
+            </form>
+            <form method="POST" action="editar.php" style="display:inline;"> <input type="hidden" name="editar_id" value="<?= $item['ItemId'] ?>">
+              <button class="minibtn" type="submit"><img src="assets/imatges/botons/edit.svg"></button>
+            </form>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+          <a href="afegir.php" class="afegirBtn"> <img src="assets/imatges/botons/add.svg" alt=""> Afegir items</a> 
+    </div>
+
   </main>
 </body>
 </html>

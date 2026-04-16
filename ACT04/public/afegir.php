@@ -120,7 +120,22 @@ $items = $stmt->fetchAll();
           <?php endforeach; ?>
         </div>
       </div>
-          -->
+          
+        -->
+        <div class="imageSelectorContainer llistaItems">
+          <h3>O tria una imatge existent fent-hi clic:</h3>
+          <div class="imageGrid">
+            <?php foreach($imatges_disponibles as $img): ?>
+              <label class="imageRadioLabel">
+               
+                <input type="radio" name="imageName" value="<?= htmlspecialchars($img, ENT_QUOTES, 'UTF-8') ?>" required>
+                <img src="<?= htmlspecialchars($dir_imatges . $img, ENT_QUOTES, 'UTF-8')?>" 
+                     alt="<?= htmlspecialchars($img, ENT_QUOTES, 'UTF-8') ?>">
+              </label>
+              <?php endforeach?>
+          </div>
+        </div>
+      
     </div>
     <div class="llistaItems">
       <h2>Llista d'ítems</h2>

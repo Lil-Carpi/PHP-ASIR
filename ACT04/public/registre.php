@@ -1,3 +1,7 @@
+<?php
+require_once '../private/register-backend.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +20,7 @@
     </nav>
   </header>
   <main>
+    <div></div>
   <div class="formulCenter">
     <div class="formul">
       <form id="loginForm">

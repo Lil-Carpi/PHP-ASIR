@@ -28,7 +28,7 @@ view('header', [
       <?php foreach ($items as $item): ?>
         <li>
           <img src="assets/imatges/items/<?= htmlspecialchars($item['ImageFile'], ENT_QUOTES, 'UTF-8') ?>" alt="" width="32">
-          <?= htmlspecialchars($item['Nom'], ENT_QUOTES, 'UTF-8') ?>
+          <?= htmlspecialchars($item['Nom'], ENT_QUOTES, 'UTF-8')?> (<?= htmlspecialchars($item['Descripcio'], ENT_QUOTES, 'UTF-8'); ?>)
 
           <?php if ($isLogged): ?>
             <form method="POST" style="display: inline;">

@@ -179,15 +179,17 @@ padding: 10px;
     align-items: center;
     
 }
-.loginBtn button
+.loginBtn .login
 {
     margin-left: auto;
     margin-right: 30px;
     padding:20px;
     border-radius: 10px;
+    color: black;
     background-color: #fdaaa6;
     border:solid 3px #160000;
     box-shadow: 0 0 100px rgba(255,255,255, 0.2);
+    text-decoration: none;
     
 }
 
@@ -195,3 +197,29 @@ padding: 10px;
 {
     margin-left:40px;
 }
+/* Efecto de bloqueo */
+.loggedOutView {
+    opacity: 0.6;
+    pointer-events: none; /* Evita clics en los botones */
+    filter: grayscale(50%);
+}
+
+.disabledBtn {
+    cursor: not-allowed;
+    background-color: #ccc;
+}
+
+/* El recuadro del usuario en el header */
+.userBox {
+    display: flex;
+    align-items: center;
+    background: #94fe9a;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid #000e00;
+    margin-left: auto;
+    box-shadow: 0 0 30px rgba(255,255,255, 1);
+}
+.userAvatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
+.username { color: #000000; font-weight: bold; }
+.userId { color: #666; font-size: 0.8em; margin-right: 15px; }

@@ -1,78 +1,13 @@
 <?php
-require_once '../private/db_connect.php';
-
-$mensaje = '';
-$clase_mensaje = '';
-
-// OPCIONAL: selector de imagenes
-$dir_imatges = 'assets/imatges/items/';
-$imatges_disponibles = [];
-if (is_dir($dir_imatges)) {
-  $arxius = scandir($dir_imatges);
-  foreach ($arxius as $arxiu) {
-    // Solo cogemos archivos que sean imágenes PNG
-    if (strtolower(pathinfo($arxiu, PATHINFO_EXTENSION)) === 'png') {
-      $imatges_disponibles[] = $arxiu;
-    }
-  }
-}
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $nom = trim($_POST['itemName']);
-  $descripcio = trim($_POST['descripcion']);
-  $imageName = trim($_POST['imageName']);
-
-  if (isset($_FILES['imageFile']) && $_FILES['imageFile']['error'] === UPLOAD_ERR_OK) {
-    $fileTmpPath = $_FILES['imageFile']['tmp_name'];
-    $fileName = $_FILES['imageFile']['name'];
-    $fileSize = $_FILES['imageFile']['size'];
-    $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-
-    if ($fileExtension === 'png' && $fileSize < 40960) {
-      $dest_path = 'assets/imatges/items/' . basename($fileName);
-      if (move_uploaded_file($fileTmpPath, $dest_path)) {
-        $imageName = $fileName;
-      } else {
-        $mensaje = "Error al moure l'arxiu pujat.";
-      }
-    } else {
-      $mensaje = "Només s'admeten arxius PNG menors de 40Kb.";
-    }
-  }
-  if (empty($mensaje) && !empty($nom)) {
-    try {
-      $stmt = $pdo->prepare('INSERT INTO dtItems (Nom, Descripcio, ImageFile) VALUES (?, ?, ?)');
-      $stmt->execute([$nom, $descripcio, $imageName]);
-      $mensaje = "Ítem afegit correctament!";
-    } catch (Exception $e) {
-      $mensaje = "Inserció no realitzada per algun error!";
-    }
-  }
-}
-
-$stmt = $pdo->query('SELECT * FROM dtItems');
-$items = $stmt->fetchAll();
+require __DIR__ . '/../src/libs/boostrap.php';
+require __DIR__ . '/../src/libs/adder.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <script src="assets/js/index.js" defer></script>
-  <title>Minetest Wiki - Afegeix ítem</title>
-</head>
-
-<body>
-  <header>
-    <nav>
-
-      <h1>Minetest Wiki - Afegeix ítem</h1>
-      <img class="logo" src="assets/imatges/logo.png" alt="minetest logo">
-
-    </nav>
-  </header>
+<?php view('header', [
+  'title' => 'Minetest Wiki v2 - Afegir',
+  'place' => '- Afegir'
+]);
+?>
 
   <main>
     <?php if ($mensaje): ?>
@@ -102,40 +37,6 @@ $items = $stmt->fetchAll();
           <button type="submit" class="afegirBtn"><img src="assets/imatges/botons/add.svg" alt=""> Afegeix</button>
         </fieldset>
       </form>
-
-      <!--OPCIONAL: Selector de imagenes JS, para facilitar el seleccionado de los iconos 
-            disponibles. Como el usuario no sabe que iconos existen mas alla del "Apple.png",
-            le será complicado poner las imagenes solo con el input de arriba-->
-
-        <!--
-        <div class="image-selector-container">
-        <h3>O tria una imatge existent fent-hi clic:</h3>
-        <div class="image-grid">
-          <?php foreach ($imatges_disponibles as $img): ?>
-            <img src="<?= $dir_imatges . htmlspecialchars($img, ENT_QUOTES, 'UTF-8') ?>"
-              alt="<?= htmlspecialchars($img, ENT_QUOTES, 'UTF-8') ?>"
-              class="selectable-image"
-              data-filename="<?= htmlspecialchars($img, ENT_QUOTES, 'UTF-8') ?>"
-              onclick="seleccionarImatge(this)">
-          <?php endforeach; ?>
-        </div>
-      </div>
-          
-        -->
-        <div class="imageSelectorContainer llistaItems">
-          <h3>O tria una imatge existent fent-hi clic:</h3>
-          <div class="imageGrid">
-            <?php foreach($imatges_disponibles as $img): ?>
-              <label class="imageRadioLabel">
-               
-                <input type="radio" name="imageName" value="<?= htmlspecialchars($img, ENT_QUOTES, 'UTF-8') ?>" required>
-                <img src="<?= htmlspecialchars($dir_imatges . $img, ENT_QUOTES, 'UTF-8')?>" 
-                     alt="<?= htmlspecialchars($img, ENT_QUOTES, 'UTF-8') ?>">
-              </label>
-              <?php endforeach?>
-          </div>
-        </div>
-      
     </div>
     <div class="llistaItems">
       <h2>Llista d'ítems</h2>

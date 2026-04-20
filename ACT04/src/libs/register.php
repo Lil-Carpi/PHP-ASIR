@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if($registro) {
                 $exito = "L'usuari s'ha creat correctament";
+                header('Location: login.php');
                 exit;
             } else {
                 $errores[] = "L'usuari no s'ha creat per algún motiu!";

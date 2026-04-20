@@ -11,7 +11,7 @@
   <nav class="navbar">
     <div class="loginBtn" id="signin">
       <img class="logo" src="assets/imatges/logo.png" alt="minetest logo">
-      <h1>Minetest Wiki v2 <?= $place ?? 'inici' ?></h1>
+      <a href="index.php" style="text-decoration: none; color: white;" ><h1>Minetest Wiki v2 <?= $place ?? 'inici' ?></h1></a>
       
       <?php if (isset($_SESSION['user_id'])): ?>
         <?php 

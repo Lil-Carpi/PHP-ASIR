@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_save_id'])) {
 $stmt = $pdo->query('SELECT * FROM dtItems');
 $items = $stmt->fetchAll();
 
-// 1. GUARDAR UN NUEVO COMENTARIO (Solo si el usuario está logueado)
+// GUARDAR UN NUEVO COMENTARIO (Solo si el usuario está logueado)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add_comment') {
     if (isset($_SESSION['user_id']) && !empty(trim($_POST['comment']))) {
         $nuevo_comentario = trim($_POST['comment']);
@@ -49,16 +49,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 }
 
-// 2. OBTENER LOS COMENTARIOS EXISTENTES
-// Hacemos un JOIN con la tabla users para traernos también el nombre y el avatar del autor
+// OBTENER LOS COMENTARIOS EXISTENTES
+// Hacemos un JOIN con la tabla users para traernos también el nombre, el id del comentario y el avatar del autor
 $comentariosStmt = $pdo->query("
-    SELECT comentaris.comment, comentaris.created_at, users.username, users.avatar 
+    SELECT comentaris.id, comentaris.comment, comentaris.created_at, users.username, users.avatar 
     FROM comentaris 
     JOIN users ON comentaris.user_id = users.id 
     ORDER BY comentaris.created_at DESC 
     LIMIT 30
 ");
 $comentarios = $comentariosStmt->fetchAll();
+
+
+
+// // // // // // BORRADO DE LOS COMENTARIOS
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_a_borrar'])) {
+  $id_a_borrar = $_POST['id_a_borrar'] ?? null;
+
+  if (isset($_SESSION['user_id']) && $id_a_borrar) {
+    try {
+      $stmt = $pdo->prepare('DELETE FROM comentaris WHERE id = ?');
+      $stmt->execute([$_POST['id_a_borrar']]);
+      $mensaje= 'Comentari esborrat correctament!';
+      $clase_mensaje = "success";
+      header("Location: index.php");
+      exit;
+    } catch (PDOException $e) {
+      $mensaje = "Esborrat de comentari no realitzat per algún motiu!";
+    }
+  }
+}
+
+
+
+
 
 ?>
 

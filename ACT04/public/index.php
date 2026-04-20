@@ -30,6 +30,8 @@ view('header', [
           <img src="assets/imatges/items/<?= htmlspecialchars($item['ImageFile'], ENT_QUOTES, 'UTF-8') ?>" alt="" width="32">
           <?= htmlspecialchars($item['Nom'], ENT_QUOTES, 'UTF-8')?> (<?= htmlspecialchars($item['Descripcio'], ENT_QUOTES, 'UTF-8'); ?>)
 
+
+
           <?php if ($isLogged): ?>
             <form method="POST" style="display: inline;">
               <input type="hidden" name="esborrar_id" value="<?= $item['ItemId'] ?>">
@@ -41,6 +43,8 @@ view('header', [
               <button class="minibtn" type="submit"><img src="assets/imatges/botons/edit.svg"></button>
             </form>
           <?php endif; ?>
+
+
         </li>
       <?php endforeach; ?>
     </ul>
@@ -83,7 +87,7 @@ view('header', [
         <?php else: ?>
             <?php foreach ($comentarios as $c): ?>
                 <?php 
-                    // Reutilizamos tu lógica mágica para la extensión del avatar
+                    
                     $ext = ($c['avatar'] === 'Ninot') ? '.svg' : '.png'; 
                 ?>
                 <div class="comentario" style="display: flex; gap: 15px; background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 10px;">
@@ -91,8 +95,23 @@ view('header', [
                     
                     <div style="flex-grow: 1;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                          <div>
                             <strong style="color: #2c3e50;"><?= htmlspecialchars($c['username']) ?></strong>
                             <span style="color: #999; font-size: 0.8em;"><?= date('d/m/Y H:i', strtotime($c['created_at'])) ?></span>
+                          </div>
+
+                            <?php if($isLogged):?>
+
+                              <form  method="POST">
+                                <input type="hidden" name="id_a_borrar" value="<?=$c['id']?>">
+                                <div title="Esborra aquest comentari">
+                                  <button class="afegirBtn" type="submit"><img src="assets/imatges/botons/delete.svg" alt=""> Esborrar comentari</button>
+                                </div>
+                              </form>
+                            <?php endif;?>
+
+
+                            
                         </div>
                         <p style="margin: 0; color: #444;"><?= nl2br(htmlspecialchars($c['comment'])) ?></p>
                     </div>

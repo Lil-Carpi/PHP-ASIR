@@ -1,12 +1,21 @@
+
 <?php
+/*mi humilde reaccion: https://www.youtube.com/watch?v=gEhohQLN30U*/
 require __DIR__ . '/../src/libs/boostrap.php';
 require __DIR__ . '/../src/libs/displayer.php';
+// llamamos al boostrap que tiene el helper y el db_connect, asi como al displayer, que es el 
+// backend del index
 ?>
 <?php
 view('header', [
   'title' => 'Minetest Wiki v2 - Inici',
   'place' => '- Inici'
 ]);
+// Pasamos como array asociativo el header, con el 
+// Titulo de pestaña y el lugar en el que nos encontramos (lo del "-" era porque no sabia como hacer la separacion
+// entre el titulo de minetest y el lugar en donde estamos sin tener que complicarme mucho la vida. Lo primero que
+// se me vino a la cabeza era poner eso y ya).
+
 ?>
 <main>
   <div class="secBar">
@@ -17,6 +26,9 @@ view('header', [
     <div style="background-color: lightgreen; margin: 30px; padding: 25px; border: solid 3px #053406; border-radius: 10px;">
       <?= htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8') ?>
     </div>
+    <!--Esto es para mostrar los mensajes cada que hayan cambios a los items que estan en la lista de items 
+        Se usa con la negacion. Si el mensaje NO esta vacio... Y se pone el $mensaje que pasa el displayer.php
+    -->
   <?php endif; ?>
 
   <?php $isLogged = isset($_SESSION['user_id']); ?>
@@ -104,6 +116,7 @@ view('header', [
                 <div>
                   <strong style="color: #2c3e50;"><?= htmlspecialchars($c['username']) ?></strong>
                   <span style="color: #999; font-size: 0.8em;"><?= date('d/m/Y H:i', strtotime($c['created_at'])) ?></span>
+                  <span><?= $c['id'] ?></span>
                 </div>
 
 

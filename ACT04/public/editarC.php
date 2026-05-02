@@ -20,8 +20,8 @@ view('header', [
                     <textarea name="comment" rows="5" required style="width: 100%; padding: 10px; border-radius: 5px;"><?= htmlspecialchars($texto_original, ENT_QUOTES, 'UTF-8') ?></textarea>
                 </div>
                 <div style="margin-top: 10px;">
-                    <button type="submit" class="submitBtn">Guardar Canvis</button>
-                    <a href="index.php" style="margin-left: 10px; color: #666;">Cancel·lar</a>
+                    <button type="submit" class="afegirBtn">Guardar Canvis</button>
+                    <a class="afegirBtn" href="index.php" >Cancel·lar</a>
                 </div>
             </form>
         </div>

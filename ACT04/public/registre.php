@@ -40,7 +40,9 @@ view('header', [
         <p>Repeteix la contrasenya:</p>
         <input id="contrasenyaRepetida" name="password_confirm" type="password" placeholder="contrasenya">
       </div>
+      <div class="loginButtons">
       <div class="formGroup">
+        <p>Avatar:</p>
         <select name="avatar" id="avatar">
           <option value="Ninot">Ninot</option>
           <option value="Dona1">Dona 1</option>
@@ -50,6 +52,7 @@ view('header', [
         </select>
       </div>
       <button class="submitBtn" type="submit">D'acord</button>
+      </div>
     </form>
   </div>
 </div>

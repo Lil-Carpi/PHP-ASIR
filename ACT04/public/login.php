@@ -37,10 +37,12 @@ view('header', [
           <p>Contrasenya:</p>
           <input id="contrasenya" name="password" type="password" placeholder="contrasenya" required>
         </div>
+        <div class="loginButtons">
         <button class="submitBtn" type="submit">Inicia la sessió</button>
         <a href="registre.php">
           <p>Registra't</p>
         </a>
+        </div>
       </form>
     </div>
   </div>
